@@ -1,14 +1,12 @@
-FROM openjdk:8
-
-LABEL name=java-rest-basic-skeleton
-LABEL version=1.0.0
+FROM maven:3.5-jdk-8 as build
 
 # Set the working directory to /app
 WORKDIR /app
 
-# copy any jar files from the first stage
-COPY ./target/*.jar /app/java-rest-basic-skeleton.jar
+# Copy all the application code into the image
+COPY . /app
 
-EXPOSE 8080
+RUN mvn -Dmaven.test.skip=true clean package
 
-CMD java -jar java-rest-basic-skeleton.jar -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG
+FROM tomcat:8.5.30-jre8
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/
