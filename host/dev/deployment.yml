@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: #{ALM.Project.Name}#
+  labels:
+    app: #{ALM.Project.Name}#
+spec:
+  # the Deployment will create one pod
+  replicas: 1
+  # selector defines how the Deployment will find pods to manage (app: #{ALM.Project.Name}#)
+  selector:
+    matchLabels:
+      app: #{ALM.Project.Name}#
+  template:
+    metadata:
+      labels:
+        # the pods are labeled app: #{ALM.Project.Name}#
+        app: #{ALM.Project.Name}#
+    spec:
+      containers:
+      - name: #{ALM.Project.Name}#
+        image: mclmprod.azurecr.io/#{ALM.Project.Name}#:#{ALM.Project.Version}#
+        ports:
+          # By default, tomcat listens on port 8080
+          # Open port 8080 for use by the pods and then
+          # the Service will expose port 80 and map it onto 8080
+        - containerPort: 8080
+        env:
+          - name: spring_profiles_active
+            value: "dev"

@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: #{ALM.Project.Name}#
+spec:
+  rules:
+  - host: #{ALM.Project.Name}#-int.msaksispoc.mayo.edu
+    http:
+      paths:
+      - backend:
+          serviceName: #{ALM.Project.Name}#
+          servicePort: 80
