@@ -11,6 +11,7 @@
 	<groupId>edu.mayo</groupId>
 	<artifactId>java-rest-basic-skeleton</artifactId>
 	<version>0.0.1</version>
+	<packaging>war</packaging>
 	<name>java-rest-basic-skeleton</name>
 	<description>Demo project for Spring Boot</description>
 
