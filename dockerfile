@@ -1,3 +1,4 @@
+FROM openjdk:8
 FROM maven:3.5-jdk-8 as build
 
 # Set the working directory to /app
@@ -8,11 +9,9 @@ COPY . /app
 
 RUN mvn -Dmaven.test.skip=true clean package
 
-FROM openjdk:8
-
 EXPOSE 8080
 
-CMD --from=build java -jar /app/target/java-rest-basic-skeleton*.jar -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG
+CMD java -jar /app/target/java-rest-basic-skeleton*.jar -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG
 
 
 # FROM tomcat:8.5.30-jre8
