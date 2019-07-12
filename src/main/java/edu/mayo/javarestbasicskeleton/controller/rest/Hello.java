@@ -10,6 +10,6 @@ class Hello {
 
     @GetMapping("/")
     public String Controller(){
-        return "Hello! Welcome to the Java Spring Boot Basic Rest Template (Rebuilt/Redeployed again)" ;
+        return "Hello! Welcome to the Java Spring Boot Basic Rest Template (Rebuilt/Redeployed from gigHub)" ;
     }
 }
