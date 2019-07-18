@@ -1,0 +1,2 @@
+config:
+  gcp:project: simple-rest-api-poc-2
