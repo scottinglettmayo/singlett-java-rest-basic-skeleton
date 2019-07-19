@@ -2,8 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as gcp from "@pulumi/gcp";
 
 const app = new gcp.appengine.Application("app", {
-    locationId: "us-central",
-    project: pulumi.getProject()
+    locationId: "us-central"
 });
 
 const rule = new gcp.appengine.FirewallRule("rule", {
